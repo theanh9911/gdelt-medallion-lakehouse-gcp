@@ -26,7 +26,16 @@ REGION       = "us-central1"
 CLUSTER_NAME = "gdel-spark-cluster-theanh"
 
 # Cấu hình cụm máy chủ ảo Dataproc (1 Master, 2 Workers)
+# Chỉ định rõ các GCS Buckets trung gian do Terraform quản lý
 CLUSTER_CONFIG = {
+    "config_bucket": f"dataproc-staging-{PROJECT_ID}",
+    "temp_bucket": f"dataproc-temp-{PROJECT_ID}",
+    "gce_cluster_config": {
+        "service_account": "957030226747-compute@developer.gserviceaccount.com",
+        "service_account_scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+        ]
+    },
     "master_config": {
         "num_instances": 1,
         "machine_type_uri": "n1-standard-2",

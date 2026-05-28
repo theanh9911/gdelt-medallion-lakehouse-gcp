@@ -132,3 +132,17 @@ resource "google_bigquery_table" "daily_analysis_table" {
 
   depends_on = [google_bigquery_dataset.media_sentiment_dataset]
 }
+
+# 1. Khai báo trước Staging Bucket cho Dataproc
+resource "google_storage_bucket" "dataproc_staging" {
+  name          = "dataproc-staging-${var.project_id}"
+  location      = var.region
+  force_destroy = true # Cho phép xóa sạch file bên trong khi destroy
+}
+
+# 2. Khai báo trước Temp Bucket cho Dataproc
+resource "google_storage_bucket" "dataproc_temp" {
+  name          = "dataproc-temp-${var.project_id}"
+  location      = var.region
+  force_destroy = true
+}
