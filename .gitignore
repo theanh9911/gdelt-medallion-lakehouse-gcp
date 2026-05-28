@@ -1,0 +1,31 @@
+# Python-generated files & virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+.ipynb_checkpoints/
+.ipynb/
+.pytest_cache/
+
+# Local data & credentials (Bảo mật tuyệt đối)
+data/
+key/
+*.json
+*.key
+
+# Airflow Local runtime files
+airflow.db
+airflow.cfg
+logs/
+webserver_config.py
+
+# Terraform files
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+.terraform.lock.hcl
+
+# OS generated files
+.DS_Store
+Thumbs.db
